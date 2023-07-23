@@ -1,20 +1,19 @@
 class LinkedList {
   constructor() {
     this.head = null;
+    this.tail = null;
     this.length = 0;
   }
 
   add(value) {
-    if (this.head) {
-      let current = this.head;
-      while (current.next) {
-        current = current.next;
-      }
-      current.next = new Data(value, current);
-    } else {
-      this.head = new Data(value);
-    }
+    const data = new Data(value, this.tail);
 
+    if (this.tail) {
+      this.tail.next = data;
+    } else {
+      this.head = data;
+    }
+    this.tail = data;
     this.length += 1;
     return this.length;
   }
