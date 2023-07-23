@@ -10,7 +10,7 @@ class LinkedList {
       while (current.next) {
         current = current.next;
       }
-      current.next = new Data(value);
+      current.next = new Data(value, current);
     } else {
       this.head = new Data(value);
     }
@@ -21,18 +21,19 @@ class LinkedList {
 
   remove(index) {
     let current = this.head;
-    let prev = null;
 
     for (let i = 0; i < index; i++) {
-      prev = current;
       current = current?.next;
     }
 
     if (current) {
-      if (prev) {
-        prev.next = current.next;
+      if (current.prev) {
+        current.prev.next = current.next;
       } else {
         this.head = current.next;
+      }
+      if (current.next) {
+        current.next.prev = current.prev;
       }
       this.length -= 1;
     }
@@ -51,8 +52,9 @@ class LinkedList {
 }
 
 class Data {
-  constructor(value) {
+  constructor(value, prev = null) {
     this.value = value;
     this.next = null;
+    this.prev = prev;
   }
 }
