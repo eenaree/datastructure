@@ -33,6 +33,8 @@ class LinkedList {
       }
       if (current.next) {
         current.next.prev = current.prev;
+      } else {
+        this.tail = current.prev;
       }
       this.length -= 1;
     }
