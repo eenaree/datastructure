@@ -54,6 +54,18 @@ class LinkedList {
     return this.length;
   }
 
+  removeLast() {
+    if (this.tail) {
+      if (this.tail.prev) {
+        this.tail.prev.next = null;
+      }
+      this.tail = this.tail.prev;
+      this.length -= 1;
+    }
+
+    return this.length;
+  }
+
   search(index) {
     let current = this.head;
     for (let i = 0; i < index; i++) {
