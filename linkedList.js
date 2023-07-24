@@ -42,6 +42,18 @@ class LinkedList {
     return this.length;
   }
 
+  removeFirst() {
+    if (this.head) {
+      if (this.head.next) {
+        this.head.next.prev = null;
+      }
+      this.head = this.head.next;
+      this.length -= 1;
+    }
+
+    return this.length;
+  }
+
   search(index) {
     let current = this.head;
     for (let i = 0; i < index; i++) {
@@ -59,3 +71,5 @@ class Data {
     this.prev = prev;
   }
 }
+
+module.exports = { LinkedList };
