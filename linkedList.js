@@ -19,11 +19,7 @@ class LinkedList {
   }
 
   remove(index) {
-    let current = this.head;
-
-    for (let i = 0; i < index; i++) {
-      current = current?.next;
-    }
+    const current = this.search(index);
 
     if (current) {
       if (current.prev) {
@@ -67,6 +63,10 @@ class LinkedList {
   }
 
   search(index) {
+    return this.#search(index);
+  }
+
+  #search(index) {
     let current = this.head;
     for (let i = 0; i < index; i++) {
       current = current?.next;
