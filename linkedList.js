@@ -6,14 +6,14 @@ class LinkedList {
   }
 
   add(value) {
-    const data = new Data(value, this.tail);
+    const node = new Node(value, this.tail);
 
     if (this.tail) {
-      this.tail.next = data;
+      this.tail.next = node;
     } else {
-      this.head = data;
+      this.head = node;
     }
-    this.tail = data;
+    this.tail = node;
     this.length += 1;
     return this.length;
   }
@@ -76,7 +76,7 @@ class LinkedList {
   }
 }
 
-class Data {
+class Node {
   constructor(value, prev = null) {
     this.value = value;
     this.next = null;
