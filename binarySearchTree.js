@@ -1,6 +1,7 @@
 class BinarySearchTree {
   constructor() {
     this.root = null;
+    this.length = 0;
   }
 
   insert(value) {
@@ -8,7 +9,10 @@ class BinarySearchTree {
       this.#insert(this.root, value);
     } else {
       this.root = new Node(value);
+      this.length += 1;
     }
+
+    return this.length;
   }
 
   #insert(node, value) {
@@ -21,12 +25,14 @@ class BinarySearchTree {
         this.#insert(node.left, value);
       } else {
         node.left = new Node(value);
+        this.length += 1;
       }
     } else {
       if (node.right) {
         this.#insert(node.right, value);
       } else {
         node.right = new Node(value);
+        this.length += 1;
       }
     }
   }
@@ -53,6 +59,7 @@ class BinarySearchTree {
 
   remove(value) {
     this.root = this.#remove(this.root, value);
+    return this.length;
   }
 
   #remove(node, value) {
@@ -74,12 +81,16 @@ class BinarySearchTree {
         } else {
           leafParent.right = null;
         }
+        this.length -= 1;
         return node;
       } else if (node.left) {
+        this.length -= 1;
         return node.left;
       } else if (node.right) {
+        this.length -= 1;
         return node.right;
       } else {
+        this.length -= 1;
         return null;
       }
     } else {
