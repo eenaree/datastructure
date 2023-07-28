@@ -36,16 +36,18 @@ class BinarySearchTree {
   }
 
   #search(node, value) {
-    if (node) {
-      if (node.value === value) {
-        return node;
-      } else if (node.value > value) {
+    if (!node) {
+      throw new Error(`value ${value} not found`);
+    }
+
+    if (node.value === value) {
+      return node;
+    } else {
+      if (node.value > value) {
         return this.#search(node.left, value);
       } else {
         return this.#search(node.right, value);
       }
-    } else {
-      throw new Error(`value ${value} not found`);
     }
   }
 }
