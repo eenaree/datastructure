@@ -54,15 +54,17 @@ class MaxHeap {
     if (leftIndex < this.arr.length) {
       // 노드의 자식이 1개라도 있는 경우
       const biggerIndex =
-        this.arr[leftIndex] > (this.arr[rightIndex] ?? 0)
+        this.arr[leftIndex] > (this.arr[rightIndex] ?? Number.NEGATIVE_INFINITY)
           ? leftIndex
           : rightIndex;
       const bigger = this.arr[biggerIndex];
 
-      if (this.arr[biggerIndex] > this.arr[index]) {
-        this.arr[biggerIndex] = this.arr[index];
-        this.arr[index] = bigger;
-        this.#reheapDown(biggerIndex);
+      if (bigger) {
+        if (this.arr[biggerIndex] > this.arr[index]) {
+          this.arr[biggerIndex] = this.arr[index];
+          this.arr[index] = bigger;
+          this.#reheapDown(biggerIndex);
+        }
       }
     }
   }
@@ -106,14 +108,16 @@ class MaxHeap {
 
     if (leftIndex < this.arr.length) {
       const biggerIndex =
-        this.arr[leftIndex] > (this.arr[rightIndex] ?? 0)
+        this.arr[leftIndex] > (this.arr[rightIndex] ?? Number.NEGATIVE_INFINITY)
           ? leftIndex
           : rightIndex;
       const bigger = this.arr[biggerIndex];
 
-      if (this.arr[biggerIndex] > this.arr[index]) {
-        this.arr[biggerIndex] = this.arr[index];
-        this.arr[index] = bigger;
+      if (bigger) {
+        if (this.arr[biggerIndex] > this.arr[index]) {
+          this.arr[biggerIndex] = this.arr[index];
+          this.arr[index] = bigger;
+        }
       }
     }
   }
