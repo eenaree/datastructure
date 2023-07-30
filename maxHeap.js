@@ -75,4 +75,46 @@ class MaxHeap {
 
     return sortedArr;
   }
+
+  update(value, newValue) {
+    const index = this.search(value);
+    if (index === null) {
+      return false;
+    }
+
+    this.arr[index] = newValue;
+    for (let i = Math.floor(this.arr.length / 2 - 1); i >= 0; i--) {
+      this.#heapify(i);
+    }
+  }
+
+  removeValue(value) {
+    const index = this.search(value);
+    if (index === null) {
+      return false;
+    }
+
+    this.arr.splice(index, 1);
+    for (let i = Math.floor(this.arr.length / 2 - 1); i >= 0; i--) {
+      this.#heapify(i);
+    }
+  }
+
+  #heapify(index) {
+    const leftIndex = index * 2 + 1;
+    const rightIndex = index * 2 + 2;
+
+    if (leftIndex < this.arr.length) {
+      const biggerIndex =
+        this.arr[leftIndex] > (this.arr[rightIndex] ?? 0)
+          ? leftIndex
+          : rightIndex;
+      const bigger = this.arr[biggerIndex];
+
+      if (this.arr[biggerIndex] > this.arr[index]) {
+        this.arr[biggerIndex] = this.arr[index];
+        this.arr[index] = bigger;
+      }
+    }
+  }
 }
