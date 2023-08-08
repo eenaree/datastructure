@@ -4,6 +4,11 @@ class PriorityQueue {
   }
 
   insert(priority, value) {
+    for (let i = 0; i < this.arr.length; i++) {
+      if (this.arr[i].priority === priority) {
+        throw new Error('duplicated priority value already exist.');
+      }
+    }
     this.arr.push({ priority, value });
     this.#reheapUp(this.arr.length - 1);
   }
@@ -122,3 +127,12 @@ class PriorityQueue {
     }
   }
 }
+
+const pq = new PriorityQueue();
+pq.insert(50, '1');
+pq.insert(35, 'hello');
+pq.insert(100, 'world');
+pq.insert(-100, '1등');
+pq.insert(1, '1');
+pq.insert(35, 'hi');
+console.log();
