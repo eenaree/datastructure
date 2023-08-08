@@ -4,6 +4,10 @@ class MaxHeap {
   }
 
   insert(value) {
+    if (this.search(value) !== null) {
+      throw new Error(`value ${value} is already in the tree.`);
+    }
+
     this.arr[this.arr.length] = value;
     this.#reheapUp(this.arr.length - 1);
   }
