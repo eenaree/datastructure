@@ -62,6 +62,18 @@ class LinkedList {
     return this.length;
   }
 
+  unshift(value) {
+    if (this.head) {
+      const exHead = this.head;
+      this.head = new Node(value, null);
+      this.head.next = exHead;
+      exHead.prev = this.head;
+      this.length += 1;
+    }
+
+    return this.length;
+  }
+
   search(index) {
     return this.#search(index);
   }
