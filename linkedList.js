@@ -39,27 +39,29 @@ class LinkedList {
   }
 
   removeFirst() {
-    if (this.head) {
-      if (this.head.next) {
-        this.head.next.prev = null;
+    const head = this.head;
+    if (head) {
+      if (head.next) {
+        head.next.prev = null;
       }
-      this.head = this.head.next;
+      this.head = head.next;
       this.length -= 1;
     }
 
-    return this.length;
+    return head;
   }
 
   removeLast() {
-    if (this.tail) {
-      if (this.tail.prev) {
-        this.tail.prev.next = null;
+    const tail = this.tail;
+    if (tail) {
+      if (tail.prev) {
+        tail.prev.next = null;
       }
-      this.tail = this.tail.prev;
+      this.tail = tail.prev;
       this.length -= 1;
     }
 
-    return this.length;
+    return tail;
   }
 
   unshift(value) {
@@ -84,7 +86,7 @@ class LinkedList {
       current = current?.next;
     }
 
-    return current;
+    return current && current.value;
   }
 }
 
