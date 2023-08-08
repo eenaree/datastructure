@@ -10,7 +10,8 @@ class Deque {
   }
 
   pop() {
-    return this.list.removeLast();
+    const node = this.list.removeLast();
+    return node && node.value;
   }
 
   unshift(value) {
@@ -18,11 +19,13 @@ class Deque {
   }
 
   shift() {
-    return this.list.removeFirst();
+    const node = this.list.removeFirst();
+    return node && node.value;
   }
 
   peek() {
-    return this.list.head;
+    const node = this.list.head;
+    return node && node.value;
   }
 
   get length() {

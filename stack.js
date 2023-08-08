@@ -10,11 +10,13 @@ class Stack {
   }
 
   pop() {
-    return this.list.removeLast();
+    const node = this.list.removeLast();
+    return node && node.value;
   }
 
   top() {
-    return this.list.tail;
+    const node = this.list.tail;
+    return node && node.value;
   }
 
   get length() {

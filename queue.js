@@ -10,11 +10,13 @@ class Queue {
   }
 
   dequeue() {
-    return this.list.removeFirst();
+    const node = this.list.removeFirst();
+    return node && node.value;
   }
 
   peek() {
-    return this.list.head;
+    const node = this.list.head;
+    return node && node.value;
   }
 
   get length() {
