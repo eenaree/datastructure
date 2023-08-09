@@ -43,6 +43,9 @@ class LinkedList {
     if (head) {
       if (head.next) {
         head.next.prev = null;
+      } else {
+        // head와 tail이 같은 상태
+        this.tail = head.next;
       }
       this.head = head.next;
       this.length -= 1;
@@ -56,6 +59,9 @@ class LinkedList {
     if (tail) {
       if (tail.prev) {
         tail.prev.next = null;
+      } else {
+        // head와 tail이 같은 상태
+        this.head = tail.prev;
       }
       this.tail = tail.prev;
       this.length -= 1;
