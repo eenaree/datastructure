@@ -111,3 +111,5 @@ class Node {
     this.right = null;
   }
 }
+
+module.exports = { BinarySearchTree };

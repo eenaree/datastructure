@@ -23,3 +23,5 @@ class Queue {
     return this.list.length;
   }
 }
+
+module.exports = { Queue };
