@@ -82,13 +82,12 @@ class PriorityQueue {
     return sortedArr;
   }
 
-  update(value, newValue) {
-    const index = this.search(value);
-    if (index === null) {
+  update(index, newItem) {
+    if (index < 0 || index >= this.arr.length) {
       return false;
     }
 
-    this.arr[index] = newValue;
+    this.arr[index] = newItem;
     for (let i = Math.floor(this.arr.length / 2 - 1); i >= 0; i--) {
       this.#heapify(i);
     }
@@ -127,12 +126,3 @@ class PriorityQueue {
     }
   }
 }
-
-const pq = new PriorityQueue();
-pq.insert(50, '1');
-pq.insert(35, 'hello');
-pq.insert(100, 'world');
-pq.insert(-100, '1등');
-pq.insert(1, '1');
-pq.insert(35, 'hi');
-console.log();
