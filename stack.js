@@ -23,3 +23,5 @@ class Stack {
     return this.list.length;
   }
 }
+
+module.exports = { Stack };

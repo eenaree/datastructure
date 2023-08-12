@@ -1,4 +1,5 @@
 const { BinarySearchTree } = require('./binarySearchTree.js');
+const { Stack } = require('./stack.js');
 const { Queue } = require('./queue.js');
 
 function breadthFirstSearch(tree) {
@@ -41,6 +42,65 @@ function postOrder(node) {
     postOrder(node.left);
     postOrder(node.right);
     console.log(node.value);
+  }
+}
+
+function iterativePreOrder(root) {
+  if (root) {
+    const stack = new Stack();
+    stack.push(root);
+
+    while (stack.length > 0) {
+      const node = stack.pop();
+      console.log(node.value);
+
+      if (node.right) {
+        stack.push(node.right);
+      }
+      if (node.left) {
+        stack.push(node.left);
+      }
+    }
+  }
+}
+
+function iterativeInOrder(root) {
+  if (root) {
+    const stack = new Stack();
+
+    while (stack.length > 0 || root) {
+      while (root) {
+        stack.push(root);
+        root = root.left;
+      }
+
+      const node = stack.pop();
+      console.log(node.value);
+      root = node.right;
+    }
+  }
+}
+
+function iterativePostOrder(root) {
+  if (root) {
+    const stack = new Stack();
+    stack.push(root);
+
+    while (stack.length > 0) {
+      const node = stack.pop();
+      console.log(node.value);
+
+      if (node.left) {
+        stack.push(node.left);
+      }
+      if (node.right) {
+        stack.push(node.right);
+      }
+    }
+
+    while (stack.length > 0) {
+      console.log(stack.pop());
+    }
   }
 }
 
